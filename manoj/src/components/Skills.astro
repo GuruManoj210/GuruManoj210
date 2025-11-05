@@ -1,0 +1,19 @@
+---
+import site from '@data/site.config';
+import Section from './Section';
+---
+<Section client:visible id="skills" title="Skills">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {site.skills.map((s) => (
+      <div class="card p-4">
+        <h3 class="font-semibold">{s.name}</h3>
+        {s.level && <p class="text-xs opacity-70 mt-1">{s.level}</p>}
+        {s.keywords && (
+          <div class="mt-2 flex flex-wrap gap-2">
+            {s.keywords.map(k => <span class="text-xs px-2 py-1 rounded bg-white/40 dark:bg-white/10 border border-white/20">{k}</span>)}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</Section>

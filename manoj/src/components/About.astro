@@ -1,0 +1,9 @@
+---
+import site from '@data/site.config';
+import Section from './Section';
+---
+<Section client:visible id="about" title="About">
+  <div class="card p-6">
+    <p class="opacity-90 leading-relaxed">{site.profile.summary}</p>
+  </div>
+</Section>

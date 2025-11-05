@@ -1,0 +1,11 @@
+---
+import site from '@data/site.config';
+---
+<footer class="border-t border-white/10 mt-16">
+  <div class="container py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm opacity-70">© {new Date().getFullYear()} {site.site.author}. All rights reserved.</p>
+    <div class="flex gap-3 text-sm opacity-80">
+      {site.socials.map(s => (<a href={s.url} target="_blank" rel="noopener noreferrer" class="hover:underline">{s.platform}</a>))}
+    </div>
+  </div>
+</footer>

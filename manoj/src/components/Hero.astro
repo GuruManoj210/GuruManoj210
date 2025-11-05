@@ -1,0 +1,17 @@
+---
+import site from '@data/site.config';
+---
+<section class="py-8 md:py-12">
+  <div class="card p-6 md:p-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+      <img src={site.profile.avatar} alt={site.profile.name} class="w-24 h-24 rounded-full object-cover border border-white/10" />
+      <div class="space-y-2">
+        <h1 class="text-3xl md:text-4xl font-bold">{site.profile.name}</h1>
+        <p class="text-lg opacity-90">{site.profile.headline}</p>
+        {site.profile.subheadline && <p class="opacity-80">{site.profile.subheadline}</p>}
+        {site.profile.location && <p class="text-sm opacity-70">{site.profile.location}</p>}
+      </div>
+    </div>
+    <p class="mt-6 opacity-90 leading-relaxed">{site.profile.summary}</p>
+  </div>
+</section>

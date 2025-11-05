@@ -1,0 +1,24 @@
+---
+import site from '@data/site.config';
+import Section from './Section';
+---
+<Section client:visible id="education" title="Education">
+  <div class="grid gap-4">
+    {site.education.map((ed) => (
+      <div class="card p-6">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-lg font-semibold">{ed.degree} · {ed.institution}</h3>
+          <p class="text-sm opacity-70">{ed.startDate} – {ed.endDate || 'Present'}</p>
+        </div>
+        {ed.fieldOfStudy && <p class="text-sm opacity-80 mt-1">{ed.fieldOfStudy}</p>}
+        {ed.gpa && <p class="text-sm opacity-70 mt-1">GPA: {ed.gpa}</p>}
+        {ed.coursework && (
+          <p class="text-sm opacity-80 mt-3">Coursework: {ed.coursework.join(', ')}</p>
+        )}
+        {ed.honors && ed.honors.length > 0 && (
+          <p class="text-sm opacity-80 mt-2">Honors: {ed.honors.join(', ')}</p>
+        )}
+      </div>
+    ))}
+  </div>
+</Section>

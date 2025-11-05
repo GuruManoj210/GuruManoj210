@@ -1,0 +1,31 @@
+---
+import site from '@data/site.config';
+import Section from './Section';
+---
+<Section client:visible id="projects" title="Projects">
+  <div class="grid md:grid-cols-2 gap-4">
+    {site.projects.map((p) => (
+      <article class="card p-5 flex flex-col gap-3">
+        {p.image && <img src={p.image} alt={p.name} class="rounded-lg border border-white/10" loading="lazy" />}
+        <div>
+          <h3 class="text-lg font-semibold">{p.name}</h3>
+          <p class="opacity-90 mt-1">{p.description}</p>
+          {p.highlights && (
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              {p.highlights.map(h => <li>{h}</li>)}
+            </ul>
+          )}
+          {p.stack && (
+            <div class="mt-2 flex flex-wrap gap-2">
+              {p.stack.map(s => <span class="text-xs px-2 py-1 rounded bg-white/40 dark:bg-white/10 border border-white/20">{s}</span>)}
+            </div>
+          )}
+        </div>
+        <div class="mt-auto flex gap-3 text-sm">
+          {p.url && <a class="underline" href={p.url} target="_blank" rel="noopener noreferrer">Live</a>}
+          {p.repo && <a class="underline" href={p.repo} target="_blank" rel="noopener noreferrer">Code</a>}
+        </div>
+      </article>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import ThemeToggle from '@components/ThemeToggle.astro';
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
+import site from '@data/site.config';
+---
+<!doctype html>
+<html lang={site.site.locale} class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={site.site.description} />
+    <meta name="keywords" content={site.site.keywords.join(', ')} />
+    <meta name="theme-color" content={site.site.themeColor} />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{site.site.title}</title>
+  </head>
+  <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-black focus:text-white focus:px-3 focus:py-1 rounded">Skip to content</a>
+    <header class="container py-6 flex items-center justify-between">
+      <Navbar />
+      <ThemeToggle />
+    </header>
+    <main id="main" class="container pb-16">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Persist theme from localStorage early to avoid FOUC
+      const theme = localStorage.getItem('theme');
+      if (theme === 'light') document.documentElement.classList.remove('dark');
+      else document.documentElement.classList.add('dark');
+    </script>
+  </body>
+</html>

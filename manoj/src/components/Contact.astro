@@ -1,0 +1,35 @@
+---
+import site from '@data/site.config';
+import Section from './Section';
+---
+<Section client:visible id="contact" title="Contact">
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="card p-6 space-y-2">
+      {site.contact.email && <p><strong>Email:</strong> <a class="underline" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></p>}
+      {site.contact.phone && <p><strong>Phone:</strong> {site.contact.phone}</p>}
+      {site.contact.address && <p><strong>Address:</strong> {site.contact.address}</p>}
+      <div class="flex gap-3 pt-2">
+        {site.socials.map(s => (
+          <a href={s.url} class="underline text-sm" target="_blank" rel="noopener noreferrer">{s.platform}</a>
+        ))}
+      </div>
+    </div>
+    <form class="card p-6 space-y-4" method="POST" action={site.contact.formspreeId ? `https://formspree.io/f/${site.contact.formspreeId}` : '#'}>
+      <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+      <div class="grid gap-2">
+        <label class="text-sm opacity-80">Name</label>
+        <input name="name" required class="px-3 py-2 rounded border border-white/20 bg-white/70 dark:bg-white/10" />
+      </div>
+      <div class="grid gap-2">
+        <label class="text-sm opacity-80">Email</label>
+        <input type="email" name="email" required class="px-3 py-2 rounded border border-white/20 bg-white/70 dark:bg-white/10" />
+      </div>
+      <div class="grid gap-2">
+        <label class="text-sm opacity-80">Message</label>
+        <textarea name="message" rows="5" required class="px-3 py-2 rounded border border-white/20 bg-white/70 dark:bg-white/10"></textarea>
+      </div>
+      <button type="submit" class="px-4 py-2 rounded bg-black text-white dark:bg-white dark:text-black disabled:opacity-50" disabled={!site.contact.formspreeId}>Send</button>
+      {!site.contact.formspreeId && <p class="text-sm opacity-70">Add your <code>formspreeId</code> in <code>site.config.ts</code> to enable the form.</p>}
+    </form>
+  </div>
+</Section>

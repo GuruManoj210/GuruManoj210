@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleLayout from '@layouts/ArticleLayout.astro';
+
+const { slug } = Astro.params as { slug: string };
+const entries = await getCollection('events');
+const entry = entries.find((e) => e.slug === slug);
+if (!entry) throw new Error(`Event not found: ${slug}`);
+const { Content } = await entry.render();
+---
+<ArticleLayout title={entry.data.title} date={entry.data.date}>
+  <Content />
+  {entry.data.link && (
+    <p class="mt-6">
+      <a class="underline" href={entry.data.link} target="_blank" rel="noopener noreferrer">External Link</a>
+    </p>
+  )}
+</ArticleLayout>

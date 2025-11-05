@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+const { title, subtitle, date } = Astro.props as { title: string; subtitle?: string; date?: Date };
+---
+<BaseLayout>
+  <article class="mx-auto max-w-3xl">
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">{title}</h1>
+      {subtitle && <p class="opacity-80 mt-2">{subtitle}</p>}
+      {date && (
+        <p class="text-sm opacity-70 mt-2">
+          {new Date(date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: '2-digit' })}
+        </p>
+      )}
+    </header>
+    <div class="card p-6 leading-relaxed space-y-4">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
