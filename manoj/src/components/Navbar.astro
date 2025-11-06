@@ -1,15 +1,30 @@
 ---
 import site from '@data/site.config';
 ---
-<nav class="flex gap-4 text-sm">
-  <a href="#about" class="hover:underline">About</a>
-  <a href="#experience" class="hover:underline">Experience</a>
-  <a href="#education" class="hover:underline">Education</a>
-  <a href="#skills" class="hover:underline">Skills</a>
-  <a href="#projects" class="hover:underline">Projects</a>
-  <a href="#events" class="hover:underline">Events</a>
-  <a href="#updates" class="hover:underline">Updates</a>
-  <a href="#gallery" class="hover:underline">Gallery</a>
-  <a href="#downloads" class="hover:underline">Downloads</a>
-  <a href="#contact" class="hover:underline">Contact</a>
+<nav class="w-full overflow-hidden">
+  <div class="flex items-center gap-3 sm:gap-4">
+    <a href="/" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400 flex items-center justify-center text-white dark:text-gray-900 font-bold text-sm sm:text-base shadow-lg group-hover:scale-110 transition-transform">
+        {site.profile.name.charAt(0)}
+      </div>
+      <span class="font-bold text-sm sm:text-base md:text-lg text-gray-900 dark:text-white whitespace-nowrap" style="letter-spacing: -0.02em;">
+        {site.profile.name}
+      </span>
+    </a>
+    <div class="flex-1 min-w-0 ml-2 sm:ml-4">
+      <div class="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1 sm:gap-y-2 text-xs sm:text-sm items-center justify-end">
+        <a href="/#about" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Profile</a>
+        <a href="/#experience" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Journey</a>
+        <a href="/#education" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Learning</a>
+        <a href="/#skills" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Toolkit</a>
+        <a href="/#projects" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Creations</a>
+        <a href="/#blogs" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Blogs</a>
+        <a href="/#events" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Moments</a>
+        <a href="/#updates" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Signals</a>
+        <a href="/#gallery" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Visuals</a>
+        <a href="/#downloads" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Assets</a>
+        <a href="/#contact" class="hover:text-gray-900 dark:hover:text-gray-300 opacity-80 hover:opacity-100 transition whitespace-nowrap">Connect</a>
+      </div>
+    </div>
+  </div>
 </nav>

@@ -170,6 +170,16 @@ const config: SiteConfig = {
       gpa: '8.5/10',
       coursework: ['DSA', 'OS', 'DBMS'],
       honors: ['Top 10%']
+    },
+    {
+      institution: 'School Name',
+      degree: '12th',
+      fieldOfStudy: 'Physics',
+      startDate: '2019-08',
+      endDate: '2023-05',
+      gpa: '8.5/10',
+      coursework: ['DSA', 'OS', 'DBMS'],
+      honors: ['Top 10%']
     }
   ],
   projects: [

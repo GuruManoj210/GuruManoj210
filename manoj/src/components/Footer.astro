@@ -1,11 +1,13 @@
 ---
 import site from '@data/site.config';
+import SocialLinks from './SocialLinks.astro';
 ---
-<footer class="border-t border-white/10 mt-16">
-  <div class="container py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-    <p class="text-sm opacity-70">© {new Date().getFullYear()} {site.site.author}. All rights reserved.</p>
-    <div class="flex gap-3 text-sm opacity-80">
-      {site.socials.map(s => (<a href={s.url} target="_blank" rel="noopener noreferrer" class="hover:underline">{s.platform}</a>))}
+<footer class="mt-16 relative overflow-hidden">
+  <div class="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-white/20 to-transparent" />
+  <div class="container py-8 flex flex-col items-center justify-center gap-4 text-center">
+    <div class="w-full overflow-hidden">
+      <SocialLinks client:load size={16} variant="row" />
     </div>
+    <p class="text-sm opacity-70">© {new Date().getFullYear()} {site.site.author}. All rights reserved.</p>
   </div>
 </footer>

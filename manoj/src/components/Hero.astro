@@ -1,17 +1,25 @@
 ---
 import site from '@data/site.config';
+import SocialLinks from './SocialLinks.astro';
 ---
-<section class="py-8 md:py-12">
-  <div class="card p-6 md:p-10">
-    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-      <img src={site.profile.avatar} alt={site.profile.name} class="w-24 h-24 rounded-full object-cover border border-white/10" />
-      <div class="space-y-2">
-        <h1 class="text-3xl md:text-4xl font-bold">{site.profile.name}</h1>
-        <p class="text-lg opacity-90">{site.profile.headline}</p>
-        {site.profile.subheadline && <p class="opacity-80">{site.profile.subheadline}</p>}
-        {site.profile.location && <p class="text-sm opacity-70">{site.profile.location}</p>}
+<section class="py-8 sm:py-10 md:py-14">
+  <div class="card p-5 sm:p-6 md:p-10 overflow-hidden">
+    <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start">
+      <div class="flex-shrink-0">
+        <img src={site.profile.avatar} alt={site.profile.name} class="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-white/20 shadow-lg" />
+      </div>
+      <div class="flex-1 min-w-0 w-full text-center sm:text-left">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white break-words overflow-wrap-anywhere" style="letter-spacing: -0.03em; line-height: 1.1;">{site.profile.name}</h1>
+        <p class="text-base sm:text-lg md:text-xl mt-3 opacity-90 break-words overflow-wrap-anywhere font-medium" style="letter-spacing: -0.015em;">{site.profile.headline}</p>
+        {site.profile.subheadline && <p class="opacity-75 mt-2 text-sm sm:text-base break-words">{site.profile.subheadline}</p>}
+        {site.profile.location && <p class="mt-2 text-sm opacity-70 break-words">📍 Based in {site.profile.location}</p>}
+        <div class="mt-4 flex flex-wrap justify-center sm:justify-start gap-2 overflow-hidden">
+          <SocialLinks client:load size={18} variant="row" />
+        </div>
       </div>
     </div>
-    <p class="mt-6 opacity-90 leading-relaxed">{site.profile.summary}</p>
+    <div class="mt-6 pt-6 border-t border-white/10">
+      <p class="opacity-90 leading-relaxed text-sm sm:text-base break-words overflow-wrap-anywhere">{site.profile.summary}</p>
+    </div>
   </div>
 </section>

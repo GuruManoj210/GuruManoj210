@@ -3,23 +3,23 @@ import site from '@data/site.config';
 import Section from './Section';
 ---
 <Section client:visible id="experience" title="Experience">
-  <div class="grid gap-4">
+  <div class="grid gap-4 sm:gap-5">
     {site.experience.map((exp) => (
-      <div class="card p-6">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h3 class="text-lg font-semibold">{exp.role} · {exp.company}</h3>
-          <p class="text-sm opacity-70">{exp.startDate} – {exp.endDate || 'Present'}</p>
+      <div class="card p-4 sm:p-6 hover:shadow-xl transition-shadow">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
+          <h3 class="text-base sm:text-lg font-semibold break-words">💼 {exp.role} <span class="opacity-70">·</span> {exp.company}</h3>
+          <p class="text-xs sm:text-sm opacity-70 whitespace-nowrap flex-shrink-0">📅 {exp.startDate} – {exp.endDate || 'Present'}</p>
         </div>
-        {exp.location && <p class="text-sm opacity-70 mt-1">{exp.location} {exp.employmentType ? `· ${exp.employmentType}` : ''}</p>}
-        {exp.summary && <p class="mt-3 opacity-90">{exp.summary}</p>}
+        {exp.location && <p class="text-xs sm:text-sm opacity-70 mt-1 break-words">📍 {exp.location} {exp.employmentType ? `· ${exp.employmentType}` : ''}</p>}
+        {exp.summary && <p class="mt-3 opacity-90 text-sm sm:text-base leading-relaxed break-words">{exp.summary}</p>}
         {exp.achievements && (
-          <ul class="list-disc list-inside mt-3 space-y-1">
-            {exp.achievements.map(a => <li>{a}</li>)}
+          <ul class="list-disc list-inside mt-3 space-y-1 text-sm opacity-90">
+            {exp.achievements.map(a => <li class="break-words">{a}</li>)}
           </ul>
         )}
         {exp.tech && (
           <div class="mt-3 flex flex-wrap gap-2">
-            {exp.tech.map(t => <span class="text-xs px-2 py-1 rounded bg-white/40 dark:bg-white/10 border border-white/20">{t}</span>)}
+            {exp.tech.map(t => <span class="text-xs px-2 py-1 rounded bg-white/50 dark:bg-white/10 border border-white/20 whitespace-nowrap">{t}</span>)}
           </div>
         )}
       </div>

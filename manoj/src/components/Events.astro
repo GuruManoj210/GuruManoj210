@@ -1,18 +1,31 @@
 ---
 import Section from './Section';
 import { getCollection } from 'astro:content';
-const events = (await getCollection('events')).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const allEvents = (await getCollection('events')).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const events = allEvents.slice(0, 3);
+const hasMore = allEvents.length > 3;
 ---
 <Section client:visible id="events" title="Events">
-  <div class="grid gap-4">
+  <div class="grid gap-3 sm:gap-4">
     {events.length > 0 ? events.map(e => (
-      <a class="card p-5 block hover:bg-white/70 dark:hover:bg-white/10 transition" href={`/events/${e.slug}`}>
-        <h3 class="font-semibold">{e.data.title}</h3>
-        <p class="text-sm opacity-70">{new Date(e.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: '2-digit' })}{e.data.location ? ` · ${e.data.location}` : ''}</p>
-        {e.data.summary && <p class="mt-2 opacity-90">{e.data.summary}</p>}
+      <a class="card p-4 sm:p-5 block hover:bg-white/80 dark:hover:bg-white/10 hover:scale-[1.01] transition-all group" href={`/events/${e.slug}`}>
+        <h3 class="font-semibold text-base sm:text-lg break-words group-hover:text-gray-700 dark:group-hover:text-gray-300 transition">🎉 {e.data.title}</h3>
+        <p class="text-xs sm:text-sm opacity-70 mt-1 break-words">📅 {new Date(e.data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: '2-digit' })}{e.data.location ? ` · 📍 ${e.data.location}` : ''}</p>
+        {e.data.summary && <p class="mt-2 opacity-90 text-sm sm:text-base leading-relaxed break-words">{e.data.summary}</p>}
       </a>
     )) : (
-      <div class="card p-6 opacity-80">Add markdown files under <code>src/content/events</code>.</div>
+      <div class="card p-4 sm:p-6 opacity-80 text-center">
+        <div class="text-3xl mb-3">🎆</div>
+        <p class="text-sm sm:text-base break-words">Add markdown files under <code class="px-2 py-1 rounded bg-gray-200 dark:bg-white/10 text-xs">src/content/events</code>.</p>
+      </div>
     )}
   </div>
+  {hasMore && (
+    <div class="mt-6 text-center">
+      <a href="/events" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-gray-700 dark:border-gray-300 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-700 hover:text-white dark:hover:bg-gray-300 dark:hover:text-gray-900 hover:shadow-lg hover:scale-105 transition-all">
+        See All Events
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  )}
 </Section>

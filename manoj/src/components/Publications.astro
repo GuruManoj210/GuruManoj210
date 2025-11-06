@@ -2,7 +2,7 @@
 import site from '@data/site.config';
 import Section from './Section';
 ---
-<Section client:visible id="blocks" title="Blocks / Publications">
+<Section client:visible id="blogs" title="Blogs">
   <div class="grid md:grid-cols-2 gap-4">
     {site.publications && site.publications.length > 0 ? site.publications.map((pub) => (
       <a href={pub.url} target="_blank" rel="noopener noreferrer" class="card p-5 hover:bg-white/70 dark:hover:bg-white/10 transition">
